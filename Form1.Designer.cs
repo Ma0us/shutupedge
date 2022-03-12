@@ -90,6 +90,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ShutUpEdge";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -47,22 +47,34 @@ namespace shutupedge
 
         private void removebrowser_Click(object sender, EventArgs e)
         {
+            Form2 ProgressForm = new Form2();
+            ProgressForm.Show();
+            ProgressForm.Text = "Uninstalling Microsoft Edge..";
+            ProgressForm.Refresh();
+            ExecuteCommand("taskkill /f /im msedge.exe");
             string output = ExecuteCommand("winget uninstall Microsoft.Edge --accept-source-agreements");
             if (output.Contains("No installed"))
             {
+                ProgressForm.Close();
                 MessageBox.Show(("Microsoft Edge isn't installed"), "ShutUpEdge");
             }
             else
             {
+                ProgressForm.Close();
                 MessageBox.Show(("Uninstalled Microsoft Edge"), "ShutUpEdge");
             }
         }
 
         private void installbrowser_Click(object sender, EventArgs e)
         {
+            Form2 ProgressForm = new Form2();
+            ProgressForm.Show();
+            ProgressForm.Text = "Installing Microsoft Edge.. (this can take some time)";
+            ProgressForm.Refresh();
             string output = ExecuteCommand("winget install Microsoft.Edge --accept-source-agreements  --accept-package-agreements");
             if (output.Contains("installed"))
             {
+                ProgressForm.Close();
                 MessageBox.Show(("Installed Microsoft Edge"), "ShutUpEdge");
             }
         }
